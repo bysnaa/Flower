@@ -38,7 +38,19 @@
   justify-content: center;
   align-items: center;
 }
-
+.nama-teks {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #5e3d30;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 4;
+}
+    
 .background-buket {
   position: absolute;
   width: 100%;
@@ -86,9 +98,10 @@
   <button onclick="simpanGambar()">Simpan</button>
 
   <div class="buket" id="buket">
-    <img src="background-cream.png" class="background-buket" alt="Background">
-    <img src="pot.png" class="pot" alt="Pot">
-  </div>
+  <img src="background-cream.png" class="background-buket" alt="Background">
+  <img src="pot.png" class="pot" alt="Pot">
+  <div id="namaTeks" class="nama-teks"></div>
+</div>
 
   <div class="watermark">bysnaa.id</div>
 
@@ -149,6 +162,14 @@
             img.style.opacity = 1;
           }, delay);
           delay += 300;
+
+          const namaTeks = document.getElementById("namaTeks");
+          namaTeks.textContent = name;
+          namaTeks.style.opacity = 0;
+
+          setTimeout(() => {
+            namaTeks.style.opacity = 1;
+           }, 200);
 
           buket.appendChild(img);
         }
